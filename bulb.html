@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <H1>Hello World!</H1>
+    <img id= "bulb" src="https://www.pngmart.com/files/1/Glowing-Bulb-PNG-Image.png" alt="bulb image" width="300px" height="300px">
+
+    <br>
+    <br>
+    <button onclick="bulb_switchon()">Switch On</button>
+    <button onclick="bulb_switchoff()">Switch Off</button>
+
+    <script>
+        function bulb_switchon(){
+            document.getElementById("bulb").src = "https://static.vecteezy.com/system/resources/previews/052/647/519/non_2x/bright-yellow-light-bulb-glowing-in-indoor-setting-png.png" 
+        }
+        function bulb_switchoff(){
+            document.getElementById("bulb").src = "https://www.pngmart.com/files/1/Glowing-Bulb-PNG-Image.png"
+        }
+    </script>
+    
+</body>
+</html>

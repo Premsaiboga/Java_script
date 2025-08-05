@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>functions</title>
+</head>
+
+<body>
+    <script>
+
+        // Part 1: Practice with Named Functions
+
+
+        // Q1
+        function sayGoodMorning() {
+            console.log("Good Morning");
+        }
+        sayGoodMorning();
+
+        // Q2
+        function welcomeUser(name) {
+            console.log("Welcome, " + name);
+        }
+        welcomeUser("Prem");
+
+        // Q3
+        function addNumbers(a, b) {
+            console.log("Sum:", a + b);
+        }
+        addNumbers(5, 7);
+
+        // Q4
+        function isEven(num) {
+            console.log(num % 2 === 0);
+        }
+        isEven(4);
+        isEven(7);
+
+        // Q5
+        function loopOneToFive() {
+            for (let i = 1; i <= 5; i++) {
+                console.log(i);
+            }
+        }
+        loopOneToFive();
+
+
+        // Part 2: Practice with Arrow Functions
+
+
+        // Q6
+        const loveJS = () => {
+            console.log("I love JavaScript");
+        };
+        loveJS();
+
+        // Q7
+        const multiply = (a, b) => {
+            console.log("Product:", a * b);
+        };
+        multiply(3, 4);
+
+        // Q8
+        const isNegative = (n) => {
+            console.log(n < 0);
+        };
+        isNegative(-2);
+        isNegative(5);
+
+        // Q9
+        const checkOddEven = (num) => {
+            if (num % 2 === 0) {
+                console.log("Even");
+            } else {
+                console.log("Odd");
+            }
+        };
+        checkOddEven(9);
+        checkOddEven(6);
+
+        // Part 3: Convert Named Function to Arrow Function
+
+        // Q10
+        const greet = () => {
+            console.log("Hello, friend!");
+        };
+        greet();
+
+        // Q11
+        const square = (num) => {
+            console.log(num * num);
+        };
+        square(5);
+
+        // Q12
+        const isPositive = (n) => {
+            console.log(n > 0);
+        };
+        isPositive(10);
+        isPositive(-3);
+
+    </script>
+
+</body>
+
+</html>
