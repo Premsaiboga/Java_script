@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trafic_signal</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            text-align: center;
+            justify-content: center;
+           
+        }
+        .pole{
+            background-color: black;
+            border: 2px solid black;
+            width: 300px;
+            height: 600px;
+            margin: auto;
+            border-radius: 10%;
+        }
+        .red,.green,.yellow{
+            z-index: 10;
+            width: 150px;
+            height: 150px;
+            margin-left: 25%;
+            border-radius: 50%;
+        }
+        .red{
+            margin-top: 10%;
+            background-color: #ff9999;
+           
+        }
+        .green{
+            margin-top: 20%;
+            background-color: #99ff99;
+        }
+        .yellow{
+            margin-top:15%;
+            background-color: #ffff99;
+        }
+        button{
+            padding: 10px;
+            margin-top: 5px;
+            background-color: grey;
+            border: 2px solid black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+       <H1>Trafic Signal</H1>
+       <div class="pole">
+        <div class="red">
+
+        </div>
+        <div class="yellow">
+            
+        </div>
+        <div class="green">
+
+        </div>
+       </div>
+       <button onclick="red()"> Stop </button>
+    <button onclick="yellow()"> Wait </button>
+    <button onclick="green()"> Go </button>
+    </div>
+
+    <script>
+        function clear(){
+            document.getElementsByClassName("red")[0].style.backgroundColor = "#ff9999"
+            document.getElementsByClassName("green")[0].style.backgroundColor = "#99ff99"
+            document.getElementsByClassName("yellow")[0].style.backgroundColor = "#ffff99"
+        }
+        function red(){
+            clear()
+            document.getElementsByClassName("red")[0].style.backgroundColor = "red"
+        }
+        function green(){
+            clear()
+            document.getElementsByClassName("green")[0].style.backgroundColor = "green"
+        }
+        function yellow(){
+            clear()
+            document.getElementsByClassName("yellow")[0].style.backgroundColor = "yellow"
+        }
+    </script>
+    
+    
+    
+</body>
+</html>
