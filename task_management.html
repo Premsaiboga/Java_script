@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management</title>
+    <style>
+        body{
+           margin: 0;
+           padding: 0;
+        }
+        .Heading,#User_input,div{
+            margin-left: 40%;
+        }
+        #User_input{
+            padding: 5px;
+        }
+        #btn{
+            padding: 5px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <script>
+        data = []
+
+        let heading = document.createElement("h1")
+        heading.textContent = "Task Management"
+        heading.classList = "Heading"
+        document.body.appendChild(heading)
+
+        let user_input = document.createElement("input")
+        user_input.id = "User_input"
+        user_input.placeholder = "Enter Here"
+        user_input.size = "30"
+        user_input.autocomplete = "off"
+        document.body.appendChild(user_input) 
+        
+        let btn = document.createElement("button")
+        btn.textContent = "Add"
+        btn.id = "btn"
+        btn.onclick = function(){
+            let input_data = document.getElementById("User_input").value
+            data.push(input_data)
+            document.getElementById("User_input").value = ""
+            container.innerHTML = ""
+            for(let eachname of data){
+                let  h2 = document.createElement("h2")
+                h2.textContent = eachname
+                container.appendChild(h2)
+            }
+        }
+        document.body.appendChild(btn)
+
+        let container = document.createElement("div")
+        document.body.appendChild(container)
+
+    </script>
+</body>
+</html>

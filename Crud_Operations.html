@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud Operations</title>
+    <style>
+    /* Background styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+
+    /* Center card container */
+    .container {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 15px;
+      width: 400px;
+      text-align: center;
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+      color: black;
+    }
+
+    /* Buttons */
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: bold;
+    }
+
+    button:nth-child(1) {
+      background: #27ae60;
+      color: white;
+    }
+
+    button:nth-child(2) {
+      background: #2980b9;
+      color: white;
+    }
+
+    button:nth-child(3) {
+      background: #c0392b;
+      color: white;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+
+    /* Paragraph output */
+    #para {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    #users_details {
+      margin-top: 15px;
+      font-size: 14px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      border-radius: 10px;
+      word-wrap: break-word;
+    }
+    #text {
+      text-align: left;
+      background-color: black;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+    <h1>Welcome</h1>
+    <button onclick="posting()">Submit</button>
+    <button onclick="Updated()">Update</button>  
+<button onclick="deleted()">Delete</button>
+    <div id = text>
+        <p id="para"></p>
+        <p id="users_details"></p>
+    </div>
+    <script>
+        let user_id = null;
+        let a = { name: "Premsai", email: "premsaiboga@gmail.com", gender: "male", status: "active" }
+        function posting() {
+            fetch("https://gorest.co.in/public/v2/users", {
+                method: "POST",
+                body: JSON.stringify(a),
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "Authorization": "Bearer 622c521a3fe173d1413bed23fb1beb86cae4a4f97255ec468ba021b16606721f"
+                }
+            })
+                .then(response => {
+                    if (response.status === 200 || response.status === 201) {
+                        return response.json();
+                    } else {
+                        document.getElementById("para").innerHTML = "Some error occured posting failed";
+                        return null;
+                    }
+                })
+                .then(data => {
+                    if (data) { 
+                        document.getElementById("para").innerHTML = "Posted Success";
+                        document.getElementById("users_details").innerHTML = JSON.stringify(data);
+                        user_id = data.id; 
+                        console.log(user_id);
+                    }
+                })
+
+        }
+
+        let updated_user = { name: "Premsai_updated", email: "premsaibog@gmail.com", gender: "male", status: "inactive" }
+        function Updated() {
+            console.log(user_id);
+            fetch("https://gorest.co.in/public/v2/users/" + user_id,{
+                method: "PUT",
+                body: JSON.stringify(updated_user),
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "Authorization": "Bearer 622c521a3fe173d1413bed23fb1beb86cae4a4f97255ec468ba021b16606721f"
+                }
+            })
+                .then(response => {
+                    if (response.status === 200 || response.status === 201) {
+                        return response.json();
+                    } else {
+                        document.getElementById("para").innerHTML = "Some error occured updating failed";
+                        return null;
+                    }
+                })
+                .then(data => {
+                    if (data) { 
+                        document.getElementById("para").innerHTML = "Updated Success";
+                        document.getElementById("users_details").innerHTML = JSON.stringify(data);
+                    }
+                })
+        }
+        function deleted() {
+            fetch("https://gorest.co.in/public/v2/users/"+user_id,{
+                method: "DELETE",
+                headers: {
+                    "Accept": "application/json",
+                    "Authorization": "Bearer 622c521a3fe173d1413bed23fb1beb86cae4a4f97255ec468ba021b16606721f"
+                }
+            })
+                .then(res => {
+                    if (res.status === 204) {
+                        document.getElementById("para").innerHTML = "Deleted Success";
+                        document.getElementById("users_details").innerHTML = "";
+                    } else {
+                        document.getElementById("para").innerHTML = "Some error occured deleting failed";
+                    }
+                })
+        }
+    </script>
+
+</body>
+
+</html>

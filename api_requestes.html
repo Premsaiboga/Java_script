@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Fetch</title>
+
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            text-align: center;
+            background-image: url("https://images.pexels.com/photos/2049422/pexels-photo-2049422.jpeg?_gl=1*7vclw1*_ga*MjA3NTc5MTY2My4xNzQ3MDM2NTg1*_ga_8JE65Q40S6*czE3NTYxODk5NDAkbzUkZzEkdDE3NTYxOTAzMzYkajUyJGwwJGgw");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+
+
+        }
+
+        /* Heading */
+        #heading {
+            color: #333;
+            margin-bottom: 20px;
+            background-color: #fff;
+        }
+
+        /* Buttons */
+        #btn,
+        #btn1 {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 6px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #btn1 {
+            background-color: #e74c3c;
+            /* red for delete */
+        }
+
+        #btn:hover {
+            background-color: #45a049;
+            box-shadow: #333 0px 0px 30px;
+        }
+
+        #btn1:hover {
+            background-color: #c0392b;
+            box-shadow: #333 0px 0px 30px;
+        }
+
+        /* Data box */
+        #pragh {
+            margin: 20px auto;
+            padding: 15px;
+            width: 80%;
+            max-width: 800px;
+            min-height: 200px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: left;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        let heading = document.createElement('h1');
+        heading.textContent = "Hello, If you want to Fetch data click on Fetch button";
+        heading.id = "heading";
+        document.body.appendChild(heading);
+
+
+        let btn = document.createElement('button');
+        btn.textContent = "Fetch Data";
+        btn.id = "btn"
+        document.body.appendChild(btn);
+
+        btn.onclick = function () {
+            fetchData();
+        }
+
+        let btn1 = document.createElement('button');
+        btn1.textContent = "Delete Data";
+        btn1.id = "btn1"
+        document.body.appendChild(btn1);
+
+        btn1.onclick = function () {
+            deletedata();
+        }
+
+        let pragh = document.createElement('p');
+        pragh.id = "pragh";
+        document.body.appendChild(pragh);
+
+
+        function deletedata() {
+            pragh.innerHTML = "Data Deleted";
+        }
+
+        function fetchData() {
+            fetch('https://jsonplaceholder.typicode.com/users')
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    pragh.innerHTML = "Fetch Data: <br>" + JSON.stringify(data);
+                })
+        }
+
+    </script>
+
+</body>
+
+</html>

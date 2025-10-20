@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save the Earth Game</title>
+
+      <style>
+        body {
+            background-color: #111;
+            color: white;
+            font-family: 'Arial Black', sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #00ffcc;
+            text-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffaa;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 20px;
+            color: #ffdd00;
+        }
+
+        #timer {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 20px 0;
+            color: red;
+            text-shadow: 0 0 15px red, 0 0 30px darkred;
+        }
+
+        img {
+            margin: 20px;
+            width: 250px;
+            height: auto;
+            border: 5px solid #fff;
+            border-radius: 15px;
+            box-shadow: 0 0 20px #fff;
+        }
+
+        input {
+            font-size: 1.5rem;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            text-align: center;
+            margin: 10px;
+            width: 150px;
+            outline: none;
+            box-shadow: 0 0 10px #00ffcc;
+        }
+
+        button {
+            font-size: 1.5rem;
+            padding: 12px 25px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(45deg, #00ffcc, #0077ff);
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.3s;
+            box-shadow: 0 0 20px #00ffcc;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            background: linear-gradient(45deg, #0077ff, #00ffcc);
+        }
+
+        button:disabled {
+            background: gray;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+    </style>
+
+
+
+</head>
+<body>
+
+    <script>
+        let heading = document.createElement('h1')
+        heading.textContent = "Save your Earth"
+        heading.id = "heading"
+        document.body.appendChild(heading)
+
+        let img = document.createElement('img')
+        img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3FUXcTMqp0ntDVsdNG4DIAtXnC3uqUfDk_g&s"
+        img.id = "image"
+        document.body.appendChild(img)
+
+        let que = document.createElement("h2")
+        que.textContent = "What is 17 + 28?"
+        que.id = "question"
+        document.body.appendChild(que)
+
+        let input = document.createElement("input")
+        input.type = "number"
+        document.body.appendChild(input)
+
+        let btn = document.createElement("button")
+        btn.textContent = "Submit"
+        document.body.appendChild(btn)
+
+        // Timer display
+        let timerDisplay = document.createElement("h3")
+        timerDisplay.id = "timer"
+        document.body.appendChild(timerDisplay)
+
+        let timeLeft = 10; // 10 seconds to answer
+        timerDisplay.textContent = "⏳ Time left: " + timeLeft + "s";
+
+        // Countdown logic
+        let countdown = setInterval(function(){
+            timeLeft--;
+            timerDisplay.textContent = "⏳ Time left: " + timeLeft + "s";
+
+            if(timeLeft <= 0){
+                clearInterval(countdown);
+                heading.textContent = "💥 BOOM! YOU FAILED TO SAVE THE EARTH 💥";
+                img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9Nm3P4aUDODfDMh1SYT3WrTpdytSrFw0rxg&s";
+                btn.disabled = true; 
+                input.disabled = true;
+            }
+        }, 1000);
+
+        btn.onclick = function(){
+            let answer = Number(input.value);  
+            clearInterval(countdown); 
+
+            if (answer === 45){
+                heading.textContent = "🎉 YOU SAVED THE EARTH 🌍";
+                img.src ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqsWiyzYnSYVBxTvpbpSQ0UEUJ4A9bP1yPtw&s";
+            }
+            else{
+                heading.textContent = "💥 WRONG ANSWER! EARTH DESTROYED 💥";
+                img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9Nm3P4aUDODfDMh1SYT3WrTpdytSrFw0rxg&s";
+            }
+            btn.disabled = true; 
+            input.disabled = true;
+        }
+    </script>
+    
+</body>
+</html>
